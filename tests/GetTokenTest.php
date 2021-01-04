@@ -2,22 +2,22 @@
 
 namespace Grixu\ApiClient\Tests;
 
-use Grixu\ApiClient\GetTokenAction;
+use Grixu\ApiClient\GetToken;
 use Grixu\ApiClient\Exceptions\TokenIssueException;
 use Grixu\ApiClient\ApiClientServiceProvider;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Orchestra\Testbench\TestCase;
 
-class GetTokenActionTest extends TestCase
+class GetTokenTest extends TestCase
 {
-    private GetTokenAction $action;
+    private GetToken $action;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->action = new GetTokenAction();
+        $this->action = new GetToken('t', 't', 't', 't');
     }
 
     protected function getPackageProviders($app)
@@ -41,7 +41,7 @@ class GetTokenActionTest extends TestCase
             ]
         );
 
-        $result = $this->action->execute();
+        $result = $this->action->get();
 
         $this->assertNotEmpty($result);
         $this->assertIsString($result);
@@ -58,9 +58,32 @@ class GetTokenActionTest extends TestCase
         );
 
         try {
-            $this->action->execute();
+            $this->action->get();
         } catch (TokenIssueException $e) {
             $this->assertTrue(true);
         }
+    }
+
+    /** @test */
+    public function reset_token(): void
+    {
+        Cache::shouldReceive('forget')->once()->andReturnNull();
+        Cache::shouldReceive('get')->once()->andReturnNull();
+        Cache::shouldReceive('put')->once()->andReturnNull();
+        Http::fake(
+            [
+                '*' => Http::response(
+                    [
+                        'access_token' => 'blebleble'
+                    ],
+                    200
+                )
+            ]
+        );
+
+        $result = $this->action->reset();
+
+        $this->assertNotEmpty($result);
+        $this->assertIsString($result);
     }
 }
