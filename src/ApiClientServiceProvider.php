@@ -21,7 +21,7 @@ class ApiClientServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'api-client');
 
         // Register the main class to use with the facade
-        $this->app->singleton('api-client', function () {
+        $this->app->bind('api-client', function () {
             return new ApiClient;
         });
     }
