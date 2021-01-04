@@ -4,27 +4,22 @@ namespace Grixu\ApiClient;
 
 use Grixu\ApiClient\Exceptions\AccessDeniedException;
 use Grixu\ApiClient\Exceptions\ApiCallException;
-use Grixu\ApiClient\Exceptions\WrongConfigException;
 use Illuminate\Support\Facades\Http;
 
-class CallApiAction
+class CallApi
 {
-    private GetTokenAction $getToken;
+    protected GetToken $getToken;
+    protected string $baseUrl;
 
-    public function __construct()
+    public function __construct(string $baseUrl, string $oAuthUrl, string $clientId, string $clientKey, string $cacheKey)
     {
-        $this->getToken = new GetTokenAction();
+        $this->baseUrl = $baseUrl;
+        $this->getToken = new GetToken($oAuthUrl, $clientId, $clientKey, $cacheKey);
     }
 
-    public function execute(string $url)
+    public function call(string $url): array
     {
-        if (empty(config('api-client.base_url'))
-            || empty(config('api-client.client_key'))
-            || empty(config('api-client.client_id'))) {
-            throw new WrongConfigException();
-        }
-
-        $token = $this->getToken->execute();
+        $token = $this->getToken->get();
 
         $client = Http::withToken($token)
             ->withHeaders(
@@ -32,7 +27,7 @@ class CallApiAction
                     'Accept' => 'application/json'
                 ]
             )
-            ->get(config('api-client.base_url').$url);
+            ->get($this->baseUrl.$url);
 
         if ($client->successful()) {
             return $client->json();
@@ -40,10 +35,9 @@ class CallApiAction
 
         if ($client->failed()) {
             if ($client->status() === 401) {
-                $resetTokenAction = new ResetTokenAction();
-                $resetTokenAction->execute();
+                $this->getToken->reset();
                 // Token refreshed, then try again
-                return $this->execute($url);
+                return $this->call($url);
             }
 
             if ($client->status() == 403) {

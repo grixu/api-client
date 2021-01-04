@@ -2,36 +2,36 @@
 
 namespace Grixu\ApiClient\Tests;
 
-use Grixu\ApiClient\CallApiAction;
+use Grixu\ApiClient\CallApi;
 use Grixu\ApiClient\Exceptions\AccessDeniedException;
 use Grixu\ApiClient\Exceptions\ApiCallException;
 use Grixu\ApiClient\Exceptions\TokenIssueException;
-use Grixu\ApiClient\Exceptions\WrongConfigException;
 use Grixu\ApiClient\ApiClientServiceProvider;
 use Illuminate\Support\Facades\Http;
 use Orchestra\Testbench\TestCase;
 
-class CallApiActionTest extends TestCase
+class CallApiTest extends TestCase
 {
-    private CallApiAction $action;
+    private CallApi $action;
     private string $url;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->action = new CallApiAction();
-        $this->url = config('api-client.base_url');
+        $this->action = new CallApi(
+            env('TEST_BASE_URL'),
+            env('TEST_OAUTH'),
+            env('TEST_CLIENT_ID'),
+            env('TEST_CLIENT_KEY'),
+            'test'
+        );
+        $this->url = env('TEST_BASE_URL');
     }
 
     protected function getPackageProviders($app)
     {
         return [ApiClientServiceProvider::class];
-    }
-
-    protected function useClearConfig($app)
-    {
-        $app->config->set('api-client.base_url', '');
     }
 
     /** @test */
@@ -56,7 +56,7 @@ class CallApiActionTest extends TestCase
             ]
         );
 
-        $result = $this->action->execute($this->url);
+        $result = $this->action->call($this->url);
 
         $this->assertNotEmpty($result);
     }
@@ -71,7 +71,7 @@ class CallApiActionTest extends TestCase
         );
 
         try {
-            $this->action->execute($this->url);
+            $this->action->call($this->url);
         } catch (ApiCallException $e) {
             $this->assertTrue(true);
         } catch (TokenIssueException $e) {
@@ -103,32 +103,13 @@ class CallApiActionTest extends TestCase
         );
 
         try {
-            $result = $this->action->execute($this->url);
-
+            $result = $this->action->call($this->url);
             $this->assertIsArray($result);
             $this->assertArrayHasKey('data', $result);
         } catch (TokenIssueException $e) {
             $this->assertTrue(false);
         } catch (ApiCallException $e) {
             $this->assertTrue(false);
-        }
-    }
-
-    /**
-     * @test
-     * @environment-setup useClearConfig
-     */
-    public function with_no_config()
-    {
-        try {
-            $this->action->execute($this->url);
-            $this->assertTrue(false);
-        } catch (ApiCallException $e) {
-            $this->assertTrue(false);
-        } catch (TokenIssueException $e) {
-            $this->assertTrue(false);
-        } catch (WrongConfigException $e) {
-            $this->assertTrue(true);
         }
     }
 
@@ -142,7 +123,7 @@ class CallApiActionTest extends TestCase
         );
 
         try {
-            $this->action->execute($this->url);
+            $this->action->call($this->url);
         } catch (ApiCallException $e) {
             $this->assertTrue(false);
         } catch (TokenIssueException $e) {
