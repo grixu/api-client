@@ -14,7 +14,7 @@ class ApiCallExceptionTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->obj = new ApiCallException(config('api-client.base_url'), 'response');
+        $this->obj = new ApiCallException(env('TEST_BASE_URL'), 'response');
     }
 
     protected function getPackageProviders($app)

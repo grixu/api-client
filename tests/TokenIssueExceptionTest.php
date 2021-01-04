@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Grixu\ApiClient\Tests;
-
 
 use Grixu\ApiClient\ApiClientServiceProvider;
 use Grixu\ApiClient\Exceptions\TokenIssueException;
