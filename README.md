@@ -12,22 +12,28 @@ composer require grixu/api-client
 
 ## Usage
 
-At first set up your `.env` file:
-```dotenv
-API_BASE_URL=""
-API_CLIENT_KEY=""
-API_CLIENT_ID=""
-API_OAUTH=""
-API_ERROR_LOGGING=true
-API_ERROR_LOG_CHANNEL="api-client"
-```
 
 Then you can just simply call:
 
 ``` php
 use Grixu\ApiClient\ApiClient;
 
-$reponse = ApiClient::make('/products');
+$client = ApiClient::make(
+    'base Url',
+    'oAuth Url',
+    'client ID',
+    'client Key',
+    'cache key',
+);
+
+$response = $client->call('url path like /products');
+```
+
+### Configuration
+You can adjust global configuration of APIClient in your `.env` file:
+```dotenv
+API_ERROR_LOGGING=true
+API_ERROR_LOG_CHANNEL="api-client"
 ```
 
 ### Testing
