@@ -27,9 +27,10 @@
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="file"/>
-        <server name="API_BASE_URL" value=""/>
-        <server name="API_CLIENT_KEY" value=""/>
-        <server name="API_CLIENT_ID" value=""/>
-        <server name="API_OAUTH" value=""/>
+        <server name="API_ERROR_LOGGING" value="true"/>
+        <server name="TEST_BASE_URL" value="test"/>
+        <server name="TEST_CLIENT_KEY" value="test"/>
+        <server name="TEST_CLIENT_ID" value="test"/>
+        <server name="TEST_OAUTH" value="test"/>
     </php>
 </phpunit>
