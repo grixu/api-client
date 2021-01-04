@@ -2,17 +2,20 @@
 
 namespace Grixu\ApiClient;
 
+use Grixu\ApiClient\Exceptions\WrongConfigException;
+
 class ApiClient
 {
-    private CallApiAction $callApiAction;
-
-    public function __construct()
+    public static function make(...$config): CallApi
     {
-        $this->callApiAction = new CallApiAction();
-    }
+        if (count($config) === 1 && is_array(config($config[0]))) {
+            $config = config($config[0]);
+        }
 
-    public function make(string $url)
-    {
-        return $this->callApiAction->execute($url);
+        if (empty($config) || count($config) < 4) {
+            throw new WrongConfigException();
+        }
+
+        return new CallApi(...$config);
     }
 }
