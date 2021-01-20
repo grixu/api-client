@@ -2,6 +2,10 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 2.0.1 - 2021-01-20
+
+- Updated to be compatible with PHP8
+
 ## 2.0.0 - 2021-01-04
 
 - Delete "Action" in class names
