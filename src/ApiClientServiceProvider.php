@@ -17,12 +17,6 @@ class ApiClientServiceProvider extends ServiceProvider
 
     public function register()
     {
-        // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'api-client');
-
-        // Register the main class to use with the facade
-        $this->app->bind('api-client', function () {
-            return new ApiClient;
-        });
     }
 }
