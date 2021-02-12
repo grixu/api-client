@@ -1,6 +1,6 @@
 # API Client
 
-Simple API Client with OAuth2 Auth handler. 
+Simple API Client with OAuth2 Auth handler.
 
 ## Installation
 
@@ -10,39 +10,79 @@ You can install the package via composer:
 composer require grixu/api-client
 ```
 
-## Usage
+## Usage for JSON API
 
+### Create configuration object
 
-Then you can just simply call:
+```php
+use Grixu\ApiClient\Config\JsonApiConfig;
+use Grixu\ApiClient\Data\PaginatedData;
+use Grixu\ApiClient\Data\StraightKeyParser;
 
-``` php
-use Grixu\ApiClient\ApiClient;
-
-$client = ApiClient::make(
-    'base Url',
-    'oAuth Url',
-    'client ID',
-    'client Key',
-    'cache key',
-);
-
-$response = $client->call('url path like /products');
+$config =  new JsonApiConfig(
+            baseUrl: 'http://rywal.com.pl',
+            responseDataClass: PaginatedData::class,
+            responseParserClass: StraightKeyParser::class,
+            authType: 'oAuth2',  // or you can use enum: AuthType::OAUTH2()
+            authUrl: 'http://rywal.com.pl',
+            authData: ['key', 'secret'],
+            paginationParam: 'page',
+            filters: ['list', 'of', 'param', 'names', 'that', 'could', 'be', 'used', 'as', 'filters'],
+            includes: ['same', 'but', 'for', 'includes'],
+            sorts: ['same', 'this', 'time', 'for', 'sort', 'options']
+        );
 ```
 
-### Configuration
+If you have various values of filter names, or extensive API to handle - consider creating Factory which will be
+handling creating `JsonApiConfig`. Or keep them in separate config file.
+
+### Create fetcher
+
+```php
+use Grixu\ApiClient\JsonApiFetcher;
+
+$fetcher = new JsonApiFetcher($config, '/api/path');
+```
+
+Here, you can adjust your query using `UrlCompose` by adding filters, sorts, includes:
+
+```php
+// in every example you could pass multiple values
+$fetcher->compose()->addFilter('filter_name', 'filter_value_1');
+$fetcher->compose()->addInclude('include', 'include_relationship_1', 'include_relationship_2');
+$fetcher->compose()->addSort('sort', 'sort_field');
+
+//also you could set page in pagination
+$fetcher->compose()->setPage('page', 2);
+// or simply move to next page by hand
+$fetcher->composer->nextPage();
+```
+
+#### Fetch Data
+
+```php
+$fetcher->fetch();
+$parsedCollection = $parser->parse(DtoClass::class);
+```
+
+`$parsedCollection` is `\Illuminate\Support\Collection` filled with DTOs you
+
+## Configuration
+
 You can adjust global configuration of APIClient in your `.env` file:
+
 ```dotenv
 API_ERROR_LOGGING=true
 API_ERROR_LOG_CHANNEL="api-client"
 ```
 
-### Testing
+## Testing
 
 ``` bash
 composer test
 ```
 
-### Changelog
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
