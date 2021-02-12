@@ -14,7 +14,7 @@ abstract class AbstractMultiParamUrlBuilder implements UrlBuilder
         $this->allowedValues = $allowedValues;
     }
 
-    protected function checkInConfig(array $params): void
+    protected function checkInAllowedValues(array $params): void
     {
         foreach ($params as $param) {
             if (!in_array($param, $this->allowedValues)) {

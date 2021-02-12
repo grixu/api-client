@@ -23,7 +23,7 @@ class ArrayBasedUrlBuilder extends AbstractMultiParamUrlBuilder
 
     public function add($param, ...$values): static
     {
-        $this->checkInConfig([$param]);
+        $this->checkInAllowedValues([$param]);
 
         $valuesCollection = collect($values);
         $compiledString = $this->prefix.'['.$param.']='.$valuesCollection->join(',');

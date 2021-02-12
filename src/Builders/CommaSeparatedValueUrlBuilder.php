@@ -19,7 +19,7 @@ class CommaSeparatedValueUrlBuilder extends AbstractMultiParamUrlBuilder
 
     public function add($param, ...$values): static
     {
-        $this->checkInConfig($values);
+        $this->checkInAllowedValues($values);
 
         $this->param = $param;
         $this->values = collect($values);
