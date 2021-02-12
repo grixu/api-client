@@ -1,20 +1,20 @@
 <?php
 
-namespace Grixu\ApiClient\Tests;
+namespace Grixu\ApiClient\Tests\Exceptions;
 
 use Grixu\ApiClient\ApiClientServiceProvider;
-use Grixu\ApiClient\Exceptions\AccessDeniedException;
+use Grixu\ApiClient\Exceptions\ApiCallException;
 use Illuminate\Support\Facades\Log;
 use Orchestra\Testbench\TestCase;
 
-class AccessDeniedExceptionTest extends TestCase
+class ApiCallExceptionTest extends TestCase
 {
-    protected AccessDeniedException $obj;
+    protected ApiCallException $obj;
 
     protected function setUp(): void
     {
         parent::setUp();
-        $this->obj = new AccessDeniedException('response');
+        $this->obj = new ApiCallException(env('TEST_BASE_URL'), 'response');
     }
 
     protected function getPackageProviders($app)
@@ -25,6 +25,8 @@ class AccessDeniedExceptionTest extends TestCase
     /** @test */
     public function check_report()
     {
+        Log::shouldReceive('channel')->once()->with(config('api-client.log_channel'))->andReturnSelf();
+        Log::shouldReceive('critical')->once()->andReturnNull();
         Log::shouldReceive('channel')->once()->with(config('api-client.log_channel'))->andReturnSelf();
         Log::shouldReceive('critical')->once()->andReturnNull();
 
