@@ -15,8 +15,7 @@ class DataFetcher
     protected FetchedData $fetchedData;
 
     public function __construct(protected Uri $uri, protected string $responseClass, protected ?TokenAuth $token = null)
-    {
-    }
+    {}
 
     public function get(): FetchedData
     {

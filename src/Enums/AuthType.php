@@ -9,5 +9,4 @@ use Spatie\Enum\Laravel\Enum;
  */
 class AuthType extends Enum
 {
-
 }
