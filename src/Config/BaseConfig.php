@@ -7,7 +7,7 @@ use Grixu\ApiClient\Contracts\Config;
 use Grixu\ApiClient\Enums\AuthType;
 use GuzzleHttp\Psr7\Uri;
 
-abstract class BaseConfig implements Config
+class BaseConfig implements Config
 {
     protected Uri $baseUrl;
     protected string $responseDataClass;
