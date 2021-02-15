@@ -1,6 +1,6 @@
 <?php
 
-namespace Grixu\ApiClient\Tests;
+namespace Grixu\ApiClient\Tests\Data;
 
 use Grixu\ApiClient\Data\PaginatedData;
 use Grixu\ApiClient\Exceptions\DamagedResponse;
@@ -65,12 +65,12 @@ class PaginatedDataTest extends TestCase
             [
                 '*' => Http::response(
                     [
+                        'data' => [
+                            'some',
+                            'data',
+                            'here'
+                        ],
                         'shit' => [
-                            'array' => [
-                                'some',
-                                'data',
-                                'here'
-                            ],
                             'current_page' => 1,
                             'total' => 10,
                             'per_page' => 3,
@@ -103,12 +103,12 @@ class PaginatedDataTest extends TestCase
             [
                 '*' => Http::response(
                     [
-                        'data' => [
-                            'array' => [
-                                'some',
-                                'data',
-                                'here'
-                            ],
+                        'shit' => [
+                            'some',
+                            'data',
+                            'here'
+                        ],
+                        'meta' => [
                             'current_page' => 1,
                             'total' => 10,
                             'per_page' => 3,

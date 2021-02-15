@@ -20,10 +20,10 @@ class PaginatedData implements FetchedData
         $responseData = $response->json();
         $this->validateResponseData($responseData);
 
-        $this->data = $responseData['data']['data'];
-        $this->currentPage = $responseData['data']['current_page'] ?? 1;
-        $this->totalPages = $responseData['data']['last_page'] ?? 1;
-        $this->perPage = $responseData['data']['per_page'] ?? count($this->data);
+        $this->data = $responseData['data'];
+        $this->currentPage = $responseData['meta']['current_page'] ?? 1;
+        $this->totalPages = $responseData['meta']['last_page'] ?? 1;
+        $this->perPage = $responseData['meta']['per_page'] ?? count($this->data);
     }
 
     protected function validateResponse(Response $response): void
@@ -39,7 +39,7 @@ class PaginatedData implements FetchedData
             throw new DamagedResponse();
         }
 
-        if (!isset($responseData['data']['data']) || empty($responseData['data']['data'])) {
+        if (!isset($responseData['meta']) || empty($responseData['meta'])) {
             throw new DamagedResponse();
         }
     }

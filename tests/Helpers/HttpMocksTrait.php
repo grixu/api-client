@@ -13,11 +13,11 @@ trait HttpMocksTrait
                 '*' => Http::response(
                     [
                         'data' => [
-                            'data' => [
-                                'some',
-                                'data',
-                                'here'
-                            ],
+                            'some',
+                            'data',
+                            'here'
+                        ],
+                        'meta' => [
                             'current_page' => 1,
                             'last_page' => 10,
                             'per_page' => 3,
@@ -43,11 +43,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 1,
                                 'per_page' => 3,
@@ -58,11 +58,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 1,
                                 'per_page' => 3,
@@ -88,11 +88,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 4,
                                 'per_page' => 3,
@@ -103,11 +103,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 2,
                                 'last_page' => 4,
                                 'per_page' => 3,
@@ -118,11 +118,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 3,
                                 'last_page' => 4,
                                 'per_page' => 3,
@@ -133,11 +133,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 4,
                                 'last_page' => 4,
                                 'per_page' => 3,
@@ -163,23 +163,23 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    [
-                                        'first' => 'First value',
-                                        'second' => 'Second value',
-                                        'third' => 'Third value'
-                                    ],
-                                    [
-                                        'first' => 'First value',
-                                        'second' => 'Second value',
-                                        'third' => 'Third value'
-                                    ],
-                                    [
-                                        'first' => 'First value',
-                                        'second' => 'Second value',
-                                        'third' => 'Third value'
-                                    ]
+                                [
+                                    'first' => 'First value',
+                                    'second' => 'Second value',
+                                    'third' => 'Third value'
                                 ],
+                                [
+                                    'first' => 'First value',
+                                    'second' => 'Second value',
+                                    'third' => 'Third value'
+                                ],
+                                [
+                                    'first' => 'First value',
+                                    'second' => 'Second value',
+                                    'third' => 'Third value'
+                                ]
+                            ],
+                            'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 1,
                                 'per_page' => 10,
@@ -211,11 +211,11 @@ trait HttpMocksTrait
                     ->push(
                         [
                             'data' => [
-                                'data' => [
-                                    'some',
-                                    'data',
-                                    'here'
-                                ],
+                                'some',
+                                'data',
+                                'here'
+                            ],
+                            'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 10,
                                 'per_page' => 3,
