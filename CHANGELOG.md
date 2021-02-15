@@ -2,6 +2,11 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.0.1 - 2021-02-15
+
+- Minor bug fixes
+- Changed Data layout in PaginatedData to be compatible with Laravel Resources
+
 ## 3.0.0 - 2021-02-12
 
 - Huge rebuild package both in concept and code layer.
