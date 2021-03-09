@@ -3,6 +3,7 @@
 namespace Grixu\ApiClient\Data;
 
 use Grixu\ApiClient\Contracts\ResponseParser;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 class StraightKeyParser implements ResponseParser
@@ -17,6 +18,12 @@ class StraightKeyParser implements ResponseParser
         foreach ($inputData as $data) {
             if (!is_array($data)) {
                 continue;
+            }
+
+            foreach ($data as $key => $value) {
+                if (Carbon::createFromTimeString($value) == true) {
+                    $data[$key] = Carbon::createFromTimeString($value);
+                }
             }
 
             $dto = new $this->dtoClass($data);
