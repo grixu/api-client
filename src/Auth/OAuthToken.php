@@ -74,11 +74,7 @@ class OAuthToken implements TokenAuth
 
     private function makeAuthRequest(): Response
     {
-        return Http::withHeaders(
-            [
-                'Accept' => 'application/json'
-            ]
-        )
+        return Http::asMultipart()
             ->post(
                 $this->config->getAuthUrl(),
                 [
