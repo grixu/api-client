@@ -21,8 +21,12 @@ class StraightKeyParser implements ResponseParser
             }
 
             foreach ($data as $key => $value) {
-                if (Carbon::createFromTimeString($value) == true) {
-                    $data[$key] = Carbon::createFromTimeString($value);
+                try {
+                    if (Carbon::createFromTimeString($value) == true) {
+                        $data[$key] = Carbon::createFromTimeString($value);
+                    }
+                } catch (\Exception $exception) {
+                    continue;
                 }
             }
 
