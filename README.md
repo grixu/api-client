@@ -55,7 +55,7 @@ $fetcher->compose()->addSort('sort', 'sort_field');
 //also you could set page in pagination
 $fetcher->compose()->setPage('page', 2);
 // or simply move to next page by hand
-$fetcher->composer->nextPage();
+$fetcher->compose()->nextPage();
 ```
 
 #### Fetch Data
