@@ -2,6 +2,11 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.0.2 - 2021-03-09
+
+- Bug fixed in OAuthToken
+- Added parsing datetime strings to Carbon objects in StraightKeyParser
+
 ## 3.0.1 - 2021-02-15
 
 - Minor bug fixes
