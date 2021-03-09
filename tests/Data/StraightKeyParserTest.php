@@ -31,10 +31,17 @@ class StraightKeyParserTest extends TestCase
             ]
         );
 
+        $this->basicAssertions($inputData);
+    }
+
+    protected function basicAssertions($inputData): Collection
+    {
         $returnedData = $this->obj->parse($inputData);
 
         $this->assertEquals(Collection::class, $returnedData::class);
         $this->assertCount(1, $returnedData);
+
+        return $returnedData;
     }
 
     /** @test */
@@ -52,9 +59,77 @@ class StraightKeyParserTest extends TestCase
             ]
         );
 
-        $returnedData = $this->obj->parse($inputData);
+        $this->basicAssertions($inputData);
+    }
 
-        $this->assertEquals(Collection::class, $returnedData::class);
-        $this->assertCount(1, $returnedData);
+    /** @test */
+    public function it_replaces_datetime_to_carbon()
+    {
+        $date = now();
+        $inputData = collect(
+            [
+                [
+                    'first' => 'first entry',
+                    'second' => 'second entry',
+                    'third' => 'third entry',
+                    'date' => $date->toISOString(),
+                ],
+            ]
+        );
+
+
+
+        $returnedData = $this->basicAssertions($inputData);
+
+        $this->assertEquals($date->timestamp, $returnedData->first()->date->timestamp);
+    }
+
+    /** @test */
+    public function it_do_not_replace_int_to_carbon()
+    {
+        $inputData = collect(
+            [
+                [
+                    'first' => 'first entry',
+                    'second' => 'second entry',
+                    'third' => 'third entry',
+                    'id' => 10987
+                ],
+            ]
+        );
+
+        $this->basicAssertions($inputData);
+    }
+
+    /** @test */
+    public function it_do_not_replace_some_numeric_strings_to_carbon()
+    {
+        $inputData = collect(
+            [
+                [
+                    'first' => 'first entry',
+                    'second' => 'second entry',
+                    'third' => '568845115895',
+                ],
+            ]
+        );
+
+        $this->basicAssertions($inputData);
+    }
+
+    /** @test */
+    public function it_safely_handles_strings_longer_than_27_charaters()
+    {
+        $inputData = collect(
+            [
+                [
+                    'first' => 'first entry is very long it could literally over 27 characters',
+                    'second' => 'second entry',
+                    'third' => '568845115895',
+                ],
+            ]
+        );
+
+        $this->basicAssertions($inputData);
     }
 }

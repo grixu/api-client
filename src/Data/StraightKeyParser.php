@@ -22,7 +22,7 @@ class StraightKeyParser implements ResponseParser
 
             foreach ($data as $key => $value) {
                 try {
-                    if (Carbon::createFromTimeString($value) == true) {
+                    if (is_string($value) && strlen($value) >= 27 && Carbon::createFromTimeString($value) == true) {
                         $data[$key] = Carbon::createFromTimeString($value);
                     }
                 } catch (\Exception $exception) {

@@ -2,6 +2,10 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.1.1 - 2021-03-09
+
+- Bugs fixed
+
 ## 3.1.0 - 2021-03-09
 
 - Bug fixed in OAuthToken
