@@ -118,7 +118,7 @@ class StraightKeyParserTest extends TestCase
     }
 
     /** @test */
-    public function it_safely_handles_strings_longer_than_27_charaters()
+    public function it_replaces_enums()
     {
         $inputData = collect(
             [
@@ -126,6 +126,7 @@ class StraightKeyParserTest extends TestCase
                     'first' => 'first entry is very long it could literally over 27 characters',
                     'second' => 'second entry',
                     'third' => '568845115895',
+                    'enum' => 'hello'
                 ],
             ]
         );

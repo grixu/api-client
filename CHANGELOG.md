@@ -2,6 +2,10 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.1.2 - 2021-03-30
+
+- New StraightKeyParser
+
 ## 3.1.1 - 2021-03-09
 
 - Bugs fixed

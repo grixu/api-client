@@ -11,5 +11,6 @@ class ExampleDto extends DataTransferObject
     public string $second;
     public string $third;
     public ?Carbon $date;
+    public ?FakeEnum $enum;
     public ?int $id;
 }
