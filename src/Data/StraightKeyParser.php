@@ -6,6 +6,7 @@ use ErrorException;
 use Grixu\ApiClient\Contracts\ResponseParser;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionProperty;
 
@@ -44,18 +45,19 @@ class StraightKeyParser implements ResponseParser
         foreach ($this->fields as $field) {
             /** @var ReflectionProperty $field */
             $type = $field->getType()->getName();
-            $fieldName = $field->getName();
+            $dtoFieldName = $field->getName();
+            $arrayFieldName = Str::camel($dtoFieldName);
 
             try {
                 if (str_contains($type, 'Enum')) {
-                    $data[$fieldName] = new $type($input[$fieldName]);
+                    $data[$dtoFieldName] = new $type($input[$arrayFieldName]);
                 } elseif ($type === 'Illuminate\Support\Carbon') {
-                    $data[$fieldName] = Carbon::createFromTimeString($input[$fieldName]);
+                    $data[$dtoFieldName] = Carbon::createFromTimeString($input[$arrayFieldName]);
                 } else {
-                    $data[$fieldName] = $input[$fieldName];
+                    $data[$dtoFieldName] = $input[$arrayFieldName];
                 }
             } catch (ErrorException) {
-                $data[$fieldName] = null;
+                $data[$dtoFieldName] = null;
             }
         }
 
