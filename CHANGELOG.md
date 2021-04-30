@@ -2,6 +2,11 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.2.0 - 2021-04-29
+
+- Use snake_case naming convention in results data array instead of camelCase
+- Updated DTO to v3
+
 ## 3.1.2 - 2021-03-30
 
 - New StraightKeyParser
@@ -26,7 +31,8 @@ All notable changes to `api-client` will be documented in this file
 - Huge rebuild package both in concept and code layer.
 - Uses PHP8, dropped PHP 7.4 compatibility.
 - More concentrated on delivery flexible package that could be use directly in apps rather than in other packages
-- Made interfaces & classes for configuration, authorization, data fetching, containing & parsing to final classes delivered by user
+- Made interfaces & classes for configuration, authorization, data fetching, containing & parsing to final classes
+  delivered by user
 - Prepared classes for config, url creating & fetching data from JSON API
 
 ## 2.0.1 - 2021-01-20
