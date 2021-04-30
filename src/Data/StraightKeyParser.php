@@ -2,9 +2,7 @@
 
 namespace Grixu\ApiClient\Data;
 
-use ErrorException;
 use Grixu\ApiClient\Contracts\ResponseParser;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
@@ -43,24 +41,31 @@ class StraightKeyParser implements ResponseParser
         $data = [];
 
         foreach ($this->fields as $field) {
-            /** @var ReflectionProperty $field */
-            $type = $field->getType()->getName();
             $dtoFieldName = $field->getName();
-            $arrayFieldName = Str::camel($dtoFieldName);
+            $arrayFieldName = Str::snake($dtoFieldName);
 
-            try {
-                if (str_contains($type, 'Enum')) {
-                    $data[$dtoFieldName] = new $type($input[$arrayFieldName]);
-                } elseif ($type === 'Illuminate\Support\Carbon') {
-                    $data[$dtoFieldName] = Carbon::createFromTimeString($input[$arrayFieldName]);
-                } else {
-                    $data[$dtoFieldName] = $input[$arrayFieldName];
-                }
-            } catch (ErrorException) {
-                $data[$dtoFieldName] = null;
+            if ($dtoFieldName === 'relationships') {
+                $data[$dtoFieldName] = $this->parseRelationship($input[$arrayFieldName]);
+            } else {
+                $data[$dtoFieldName] = $input[$arrayFieldName] ?? null;
             }
         }
 
         return $data;
+    }
+
+    protected function parseRelationship(array $inputRelationships): array
+    {
+        $relationships = [];
+
+        foreach ($inputRelationships as $input) {
+            $relationship = [];
+            foreach ($input as $key => $value) {
+                $relationship[Str::camel($key)] = $value;
+            }
+            $relationships[] = $relationship;
+        }
+
+        return $relationships;
     }
 }
