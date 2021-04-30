@@ -5,6 +5,7 @@ All notable changes to `api-client` will be documented in this file
 ## 3.2.0 - 2021-04-29
 
 - Use snake_case naming convention in results data array instead of camelCase
+- Updated DTO to v3
 
 ## 3.1.2 - 2021-03-30
 
