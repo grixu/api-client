@@ -2,6 +2,10 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.2.1 - 2021-05-04
+
+- Bug fixed in `StraightKeyParser`
+
 ## 3.2.0 - 2021-04-29
 
 - Use snake_case naming convention in results data array instead of camelCase
