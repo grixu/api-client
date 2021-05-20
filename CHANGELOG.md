@@ -2,6 +2,10 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.3.0 - 2021-05-21
+
+- Added `chunk()` method
+
 ## 3.2.1 - 2021-05-04
 
 - Bug fixed in `StraightKeyParser`

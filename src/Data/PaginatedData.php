@@ -35,7 +35,7 @@ class PaginatedData implements FetchedData
 
     protected function validateResponseData(array $responseData): void
     {
-        if (!isset($responseData['data']) || empty($responseData['data'])) {
+        if (!isset($responseData['data'])) {
             throw new DamagedResponse();
         }
 

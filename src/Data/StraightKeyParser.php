@@ -44,7 +44,7 @@ class StraightKeyParser implements ResponseParser
             $dtoFieldName = $field->getName();
             $arrayFieldName = Str::snake($dtoFieldName);
 
-            if ($dtoFieldName === 'relationships' && isset($input[$arrayFieldName])) {
+            if ($dtoFieldName === 'relations' && isset($input[$arrayFieldName])) {
                 $data[$dtoFieldName] = $this->parseRelationship($input[$arrayFieldName]);
             } else {
                 $data[$dtoFieldName] = $input[$arrayFieldName] ?? null;
