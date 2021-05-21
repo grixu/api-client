@@ -5,6 +5,7 @@ namespace Grixu\ApiClient\Data;
 use Grixu\ApiClient\Contracts\FetchedData;
 use Grixu\ApiClient\Exceptions\DamagedResponse;
 use Illuminate\Http\Client\Response;
+use Illuminate\Support\Collection;
 
 class PaginatedData implements FetchedData
 {
@@ -47,6 +48,11 @@ class PaginatedData implements FetchedData
     public function getData(): array
     {
         return $this->data;
+    }
+
+    public function getDataCollection(): Collection
+    {
+        return collect($this->data);
     }
 
     public function getCurrentPage(): int
