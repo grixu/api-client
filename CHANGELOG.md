@@ -2,6 +2,15 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.3.0 - 2021-05-21
+
+- Added `chunk()` method in `JsonApiFetcher`
+- Added `getDataCollection` in `PaginatedData`
+- Added definition of `getDataCollection` in `FetchedData`
+- Make method `parseElement` public in `StraightKeyParser`
+- Added definition of `praseElement` in `ResponseParser` interface
+
+
 ## 3.2.1 - 2021-05-04
 
 - Bug fixed in `StraightKeyParser`

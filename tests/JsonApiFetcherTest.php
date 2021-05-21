@@ -9,6 +9,7 @@ use Grixu\ApiClient\Tests\Helpers\FakeConfig;
 use Grixu\ApiClient\Tests\Helpers\HttpMocksTrait;
 use Grixu\ApiClient\UrlCompose;
 use Illuminate\Support\Facades\Cache;
+use Mockery\Mock;
 use Orchestra\Testbench\TestCase;
 
 class JsonApiFetcherTest extends TestCase
@@ -117,5 +118,17 @@ class JsonApiFetcherTest extends TestCase
         $returnedValue = $this->obj->compose();
 
         $this->assertEquals(UrlCompose::class, $returnedValue::class);
+    }
+
+    /** @test */
+    public function it_chunk_load()
+    {
+        Cache::flush();
+        $this->mockHttpMultiplePagesDataResponseSequence();
+        $this->makeObj(true);
+
+        $closure = \Mockery::mock(fn () => true);
+        $this->obj->chunk(fn () => $closure());
+        $closure->shouldHaveBeenCalled();
     }
 }

@@ -46,4 +46,23 @@ class JsonApiFetcher extends AbstractApiFetcher
             $this->fetch($before);
         }
     }
+
+    public function chunk(Closure $loop)
+    {
+        $dataFetcher = new DataFetcher(
+            $this->urlComposer->get(),
+            $this->config->getResponseDataClass(),
+            $this->token
+        );
+
+        $dataFetcher->fetch();
+        $results = $dataFetcher->get();
+
+        $loop($results->getDataCollection());
+
+        if ($results->isMoreToLoad() && $this->loadAll) {
+            $this->urlComposer->nextPage();
+            $this->chunk($loop);
+        }
+    }
 }

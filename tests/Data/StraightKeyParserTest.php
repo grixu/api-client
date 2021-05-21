@@ -78,7 +78,6 @@ class StraightKeyParserTest extends TestCase
         );
 
 
-
         $returnedData = $this->basicAssertions($inputData);
 
         $this->assertEquals($date->timestamp, $returnedData->first()->date->timestamp);
@@ -128,6 +127,27 @@ class StraightKeyParserTest extends TestCase
                     'third' => '568845115895',
                     'enum' => 'hello'
                 ],
+            ]
+        );
+
+        $this->basicAssertions($inputData);
+    }
+
+    /** @test */
+    public function it_parsing_collection_of_arrays_with_relations_data_to_collection_of_dtos()
+    {
+        $inputData = collect(
+            [
+                [
+                    'first' => 'first entry',
+                    'second' => 'second entry',
+                    'third' => 'third entry',
+                    'relations' => [
+                        [
+                            'test' => 'another_thing'
+                        ]
+                    ]
+                ]
             ]
         );
 
