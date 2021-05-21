@@ -58,7 +58,7 @@ class JsonApiFetcher extends AbstractApiFetcher
         $dataFetcher->fetch();
         $results = $dataFetcher->get();
 
-        $loop($results);
+        $loop($results->getDataCollection());
 
         if ($results->isMoreToLoad() && $this->loadAll) {
             $this->urlComposer->nextPage();
