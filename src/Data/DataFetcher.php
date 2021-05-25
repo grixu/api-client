@@ -43,7 +43,7 @@ class DataFetcher
             [
                 'Accept' => 'application/json'
             ]
-        );
+        )->timeout(config('api-client.timeout'));
 
         if ($this->token) {
             $request = $request->withToken($this->token->getToken());
