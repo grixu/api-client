@@ -27,15 +27,20 @@ class JsonApiFetcher extends AbstractApiFetcher
         return $this->urlComposer;
     }
 
-    public function fetch(?Closure $before = null)
+    public function makeDataFetcher(): DataFetcher
     {
-        $this->callClosure($before);
-
-        $dataFetcher = new DataFetcher(
+        return new DataFetcher(
             $this->urlComposer->get(),
             $this->config->getResponseDataClass(),
             $this->token
         );
+    }
+
+    public function fetch(?Closure $before = null)
+    {
+        $this->callClosure($before);
+
+        $dataFetcher = $this->makeDataFetcher();
         $dataFetcher->fetch();
 
         $results = $dataFetcher->get();
