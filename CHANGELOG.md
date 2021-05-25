@@ -2,6 +2,11 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.3.1 - 2021-05-25
+
+- Added access to `DataFetcher` in `JsonApiFetcher`
+- Added timeout
+
 ## 3.3.0 - 2021-05-21
 
 - Added `chunk()` method in `JsonApiFetcher`

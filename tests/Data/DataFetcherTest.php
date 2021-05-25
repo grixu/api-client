@@ -37,6 +37,13 @@ class DataFetcherTest extends TestCase
         $this->obj = new DataFetcher($uri, $config->getResponseDataClass(), $token);
     }
 
+    protected function getPackageProviders($app)
+    {
+        return [
+            ApiClientServiceProvider::class
+        ];
+    }
+
     /** @test */
     public function it_makes_http_call()
     {
