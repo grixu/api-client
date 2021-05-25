@@ -36,6 +36,11 @@ class JsonApiFetcher extends AbstractApiFetcher
         );
     }
 
+    public function getUrlCompose(): UrlCompose
+    {
+        return $this->getUrlCompose();
+    }
+
     public function fetch(?Closure $before = null)
     {
         $this->callClosure($before);
