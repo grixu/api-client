@@ -7,6 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionProperty;
+use Spatie\DataTransferObject\DataTransferObject;
 
 class StraightKeyParser implements ResponseParser
 {
@@ -27,8 +28,7 @@ class StraightKeyParser implements ResponseParser
                 continue;
             }
 
-            $preparedData = $this->parseElement($inputData);
-            $dto = new $this->dtoClass($preparedData);
+            $dto = $this->parseElement($inputData);
 
             $parsed->push($dto);
         }
@@ -36,7 +36,7 @@ class StraightKeyParser implements ResponseParser
         return $parsed;
     }
 
-    protected function parseElement(array $input): array
+    public function parseElement(array $input): DataTransferObject
     {
         $data = [];
 
@@ -44,14 +44,14 @@ class StraightKeyParser implements ResponseParser
             $dtoFieldName = $field->getName();
             $arrayFieldName = Str::snake($dtoFieldName);
 
-            if ($dtoFieldName === 'relationships' && isset($input[$arrayFieldName])) {
+            if ($dtoFieldName === 'relations' && isset($input[$arrayFieldName])) {
                 $data[$dtoFieldName] = $this->parseRelationship($input[$arrayFieldName]);
             } else {
                 $data[$dtoFieldName] = $input[$arrayFieldName] ?? null;
             }
         }
 
-        return $data;
+        return (new $this->dtoClass($data));
     }
 
     protected function parseRelationship(array $inputRelationships): array

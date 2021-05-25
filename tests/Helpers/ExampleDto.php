@@ -19,4 +19,6 @@ class ExampleDto extends DataTransferObject
     public FakeEnum|null $enum;
 
     public int|null $id;
+
+    public array|null $relations;
 }
