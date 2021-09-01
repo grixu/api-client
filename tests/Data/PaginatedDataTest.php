@@ -68,16 +68,16 @@ class PaginatedDataTest extends TestCase
                         'data' => [
                             'some',
                             'data',
-                            'here'
+                            'here',
                         ],
                         'shit' => [
                             'current_page' => 1,
                             'total' => 10,
                             'per_page' => 3,
-                        ]
+                        ],
                     ],
                     200
-                )
+                ),
             ]
         );
 
@@ -106,16 +106,16 @@ class PaginatedDataTest extends TestCase
                         'shit' => [
                             'some',
                             'data',
-                            'here'
+                            'here',
                         ],
                         'meta' => [
                             'current_page' => 1,
                             'total' => 10,
                             'per_page' => 3,
-                        ]
+                        ],
                     ],
                     200
-                )
+                ),
             ]
         );
 

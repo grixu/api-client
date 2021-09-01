@@ -11,8 +11,9 @@ class CommaSeparatedValueUrlBuilder extends AbstractMultiParamUrlBuilder
 
     public function get(): string
     {
-        if (empty($this->param) || empty($this->values))
+        if (empty($this->param) || empty($this->values)) {
             return '';
+        }
 
         return $this->param.'='.$this->values->join(',');
     }

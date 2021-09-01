@@ -2,7 +2,7 @@
 
 return [
     'auth_types' => [
-        \Grixu\ApiClient\Enums\AuthType::OAUTH2()->value => \Grixu\ApiClient\Auth\OAuthToken::class
+        \Grixu\ApiClient\Enums\AuthType::OAUTH2()->value => \Grixu\ApiClient\Auth\OAuthToken::class,
     ],
 
     'logging' => env('API_ERROR_LOGGING', false),

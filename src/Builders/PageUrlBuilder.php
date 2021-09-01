@@ -11,8 +11,9 @@ class PageUrlBuilder implements UrlBuilder
 
     public function get(): string
     {
-        if (empty($this->param) || empty($this->value))
+        if (empty($this->param) || empty($this->value)) {
             return '';
+        }
 
         return $this->param.'='.$this->value;
     }

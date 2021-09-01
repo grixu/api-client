@@ -4,8 +4,6 @@ namespace Grixu\ApiClient\Tests\Config;
 
 use Grixu\ApiClient\Auth\AuthData;
 use Grixu\ApiClient\Config\JsonApiConfig;
-use Grixu\ApiClient\Data\PaginatedData;
-use Grixu\ApiClient\Data\StraightKeyParser;
 use Grixu\ApiClient\Enums\AuthType;
 use Grixu\ApiClient\Tests\Helpers\FakeConfig;
 use Orchestra\Testbench\TestCase;
