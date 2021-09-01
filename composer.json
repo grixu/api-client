@@ -25,9 +25,12 @@
         "spatie/laravel-enum": "^2.2"
     },
     "require-dev": {
-        "spatie/data-transfer-object": "^3.1",
+        "friendsofphp/php-cs-fixer": "^3.1",
+        "nunomaduro/larastan": "^0.7.12",
+        "nunomaduro/phpinsights": "^2.0",
         "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.4"
+        "phpunit/phpunit": "^9.4",
+        "spatie/data-transfer-object": "^3.1"
     },
     "autoload": {
         "psr-4": {
@@ -40,9 +43,12 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
+        "test": "vendor/bin/phpunit && vendor/bin/phpstan analyse && php artisan insights",
+        "test:unit": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "lint": "vendor/bin/php-cs-fixer fix",
+        "insights": "vendor/bin/phpinsights",
+        "phpstan": "vendor/bin/phpstan analyse"
     },
     "config": {
         "sort-packages": true
