@@ -30,7 +30,7 @@ class UrlCompose
                 $this->filterBuilder->get(),
                 $this->sortBuilder->get(),
                 $this->includeBuilder->get(),
-                $this->pageBuilder->get()
+                $this->pageBuilder->get(),
             ]
         )
             ->filter()

@@ -3,18 +3,15 @@
 namespace Grixu\ApiClient\Tests\Data;
 
 use Grixu\ApiClient\ApiClientServiceProvider;
-use Grixu\ApiClient\ApiConfig;
 use Grixu\ApiClient\Auth\OAuthToken;
 use Grixu\ApiClient\Data\DataFetcher;
 use Grixu\ApiClient\Data\PaginatedData;
 use Grixu\ApiClient\Exceptions\AccessDeniedException;
 use Grixu\ApiClient\Exceptions\ApiCallException;
-use Grixu\ApiClient\Exceptions\MissingResponseClassNameInConfigException;
 use Grixu\ApiClient\Tests\Helpers\FakeConfig;
 use Grixu\ApiClient\Tests\Helpers\HttpMocksTrait;
 use GuzzleHttp\Psr7\Uri;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 use Orchestra\Testbench\TestCase;
 
 class DataFetcherTest extends TestCase
@@ -40,7 +37,7 @@ class DataFetcherTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            ApiClientServiceProvider::class
+            ApiClientServiceProvider::class,
         ];
     }
 

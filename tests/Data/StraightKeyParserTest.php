@@ -26,8 +26,8 @@ class StraightKeyParserTest extends TestCase
                 [
                     'first' => 'first entry',
                     'second' => 'second entry',
-                    'third' => 'third entry'
-                ]
+                    'third' => 'third entry',
+                ],
             ]
         );
 
@@ -52,10 +52,10 @@ class StraightKeyParserTest extends TestCase
                 [
                     'first' => 'first entry',
                     'second' => 'second entry',
-                    'third' => 'third entry'
+                    'third' => 'third entry',
                 ],
                 'crap',
-                666
+                666,
             ]
         );
 
@@ -77,7 +77,6 @@ class StraightKeyParserTest extends TestCase
             ]
         );
 
-
         $returnedData = $this->basicAssertions($inputData);
 
         $this->assertEquals($date->timestamp, $returnedData->first()->date->timestamp);
@@ -92,7 +91,7 @@ class StraightKeyParserTest extends TestCase
                     'first' => 'first entry',
                     'second' => 'second entry',
                     'third' => 'third entry',
-                    'id' => 10987
+                    'id' => 10987,
                 ],
             ]
         );
@@ -125,7 +124,7 @@ class StraightKeyParserTest extends TestCase
                     'first' => 'first entry is very long it could literally over 27 characters',
                     'second' => 'second entry',
                     'third' => '568845115895',
-                    'enum' => 'hello'
+                    'enum' => 'hello',
                 ],
             ]
         );
@@ -144,10 +143,10 @@ class StraightKeyParserTest extends TestCase
                     'third' => 'third entry',
                     'relations' => [
                         [
-                            'test' => 'another_thing'
-                        ]
-                    ]
-                ]
+                            'test' => 'another_thing',
+                        ],
+                    ],
+                ],
             ]
         );
 

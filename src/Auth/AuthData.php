@@ -5,7 +5,8 @@ namespace Grixu\ApiClient\Auth;
 class AuthData
 {
     public function __construct(protected string $key, protected string $secret)
-    {}
+    {
+    }
 
     public function getKey(): string
     {

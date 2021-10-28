@@ -18,6 +18,7 @@ class BaseConfig implements Config
 
     public static function make(array $config): static
     {
+        /** @phpstan-ignore-next-line */
         return new static(...$config);
     }
 

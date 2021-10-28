@@ -8,7 +8,9 @@ class FakeEnumCaster implements Caster
 {
     public function cast(mixed $value): FakeEnum
     {
-        if ($value instanceof FakeEnum) return $value;
+        if ($value instanceof FakeEnum) {
+            return $value;
+        }
 
         return FakeEnum::make($value);
     }

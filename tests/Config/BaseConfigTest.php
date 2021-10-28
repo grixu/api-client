@@ -15,12 +15,7 @@ class BaseConfigTest extends TestCase
     /** @test */
     public function it_expandable()
     {
-        $obj = new class (
-            'http://rywal.com.pl',
-            'oAuth2',
-            'http://rywal.com.pl',
-            ['key', 'secret'],
-        ) extends BaseConfig {
+        $obj = new class ('http://rywal.com.pl', 'oAuth2', 'http://rywal.com.pl', ['key', 'secret'], ) extends BaseConfig {
             protected string $newVal;
 
             public function __construct(

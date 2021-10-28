@@ -18,7 +18,7 @@ class CommaSeparatedValueUrlBuilderTest extends TestCase
             [
                 'some',
                 'relationship',
-                'more'
+                'more',
             ]
         );
     }

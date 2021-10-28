@@ -15,16 +15,16 @@ trait HttpMocksTrait
                         'data' => [
                             'some',
                             'data',
-                            'here'
+                            'here',
                         ],
                         'meta' => [
                             'current_page' => 1,
                             'last_page' => 10,
                             'per_page' => 3,
-                        ]
+                        ],
                     ],
                     200
-                )
+                ),
             ]
         );
     }
@@ -36,7 +36,7 @@ trait HttpMocksTrait
                 '*' => Http::sequence()
                     ->push(
                         [
-                            'access_token' => 'blebleble'
+                            'access_token' => 'blebleble',
                         ],
                         200
                     )
@@ -45,13 +45,13 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 1,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
                     )
@@ -60,16 +60,16 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 1,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
-                    )
+                    ),
             ]
         );
     }
@@ -81,7 +81,7 @@ trait HttpMocksTrait
                 '*' => Http::sequence()
                     ->push(
                         [
-                            'access_token' => 'blebleble'
+                            'access_token' => 'blebleble',
                         ],
                         200
                     )
@@ -90,13 +90,13 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 4,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
                     )
@@ -105,13 +105,13 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 2,
                                 'last_page' => 4,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
                     )
@@ -120,13 +120,13 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 3,
                                 'last_page' => 4,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
                     )
@@ -135,16 +135,16 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 4,
                                 'last_page' => 4,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
-                    )
+                    ),
             ]
         );
     }
@@ -156,7 +156,7 @@ trait HttpMocksTrait
                 '*' => Http::sequence()
                     ->push(
                         [
-                            'access_token' => 'blebleble'
+                            'access_token' => 'blebleble',
                         ],
                         200
                     )
@@ -166,27 +166,27 @@ trait HttpMocksTrait
                                 [
                                     'first' => 'First value',
                                     'second' => 'Second value',
-                                    'third' => 'Third value'
+                                    'third' => 'Third value',
                                 ],
                                 [
                                     'first' => 'First value',
                                     'second' => 'Second value',
-                                    'third' => 'Third value'
+                                    'third' => 'Third value',
                                 ],
                                 [
                                     'first' => 'First value',
                                     'second' => 'Second value',
-                                    'third' => 'Third value'
-                                ]
+                                    'third' => 'Third value',
+                                ],
                             ],
                             'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 1,
                                 'per_page' => 10,
-                            ]
+                            ],
                         ],
                         200
-                    )
+                    ),
             ]
         );
     }
@@ -198,13 +198,13 @@ trait HttpMocksTrait
                 '*' => Http::sequence()
                     ->push(
                         [
-                            'Unauthorized'
+                            'Unauthorized',
                         ],
                         401
                     )
                     ->push(
                         [
-                            'access_token' => 'blebleble'
+                            'access_token' => 'blebleble',
                         ],
                         200
                     )
@@ -213,16 +213,16 @@ trait HttpMocksTrait
                             'data' => [
                                 'some',
                                 'data',
-                                'here'
+                                'here',
                             ],
                             'meta' => [
                                 'current_page' => 1,
                                 'last_page' => 10,
                                 'per_page' => 3,
-                            ]
+                            ],
                         ],
                         200
-                    )
+                    ),
 
             ]
         );
@@ -234,10 +234,10 @@ trait HttpMocksTrait
             [
                 '*' => Http::response(
                     [
-                        'No access allowed'
+                        'No access allowed',
                     ],
                     403
-                )
+                ),
             ]
         );
     }
@@ -248,10 +248,10 @@ trait HttpMocksTrait
             [
                 '*' => Http::response(
                     [
-                        'Not found'
+                        'Not found',
                     ],
                     404
-                )
+                ),
             ]
         );
     }
@@ -262,10 +262,10 @@ trait HttpMocksTrait
             [
                 '*' => Http::response(
                     [
-                        'access_token' => 'blebleble'
+                        'access_token' => 'blebleble',
                     ],
                     200
-                )
+                ),
             ]
         );
     }
@@ -276,10 +276,10 @@ trait HttpMocksTrait
             [
                 '*' => Http::response(
                     [
-                        'Shit happens'
+                        'Shit happens',
                     ],
                     500
-                )
+                ),
             ]
         );
     }

@@ -17,7 +17,7 @@ class ArrayBasedUrlBuilderTest extends TestCase
         $this->obj = new ArrayBasedUrlBuilder(
             [
                 'first',
-                'second'
+                'second',
             ]
         );
     }
