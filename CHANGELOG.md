@@ -2,6 +2,12 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.4.0 - 2021-10-28
+
+- Added code quality tools such as PHP_CS_Fixer, PHP Insights & PHPStan
+- Added scanning & formatting code with those tools in CI pipeline
+- Applied formatting on code base
+
 ## 3.3.2 - 2021-05-25
 
 - Added access to UrlCompose in `JsonApiFetcher`
