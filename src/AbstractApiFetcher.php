@@ -15,8 +15,7 @@ abstract class AbstractApiFetcher implements ApiFetcher
     protected Collection $dataCollection;
 
     public function __construct(
-        private Config $config,
-        private string $path
+        private Config $config
     ) {
         $tokenClassName = config('api-client.auth_types')[$config->getAuthType()->value];
         $this->token = new $tokenClassName($config);
