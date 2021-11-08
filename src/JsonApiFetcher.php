@@ -12,11 +12,11 @@ class JsonApiFetcher extends AbstractApiFetcher
 
     public function __construct(
         private JsonApiConfig $config,
-        private string $path,
+        string $path,
         private bool $loadAll = true,
-        private int $page = 1
+        int $page = 1
     ) {
-        parent::__construct($config, $path);
+        parent::__construct($config);
 
         $this->urlComposer = new UrlCompose($config, $path);
         $this->urlComposer->setPage($config->getPaginationParam(), $page);
