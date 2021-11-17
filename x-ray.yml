@@ -5,5 +5,4 @@ functions:
 paths:
   include:
     - 'src'
-    - 'database'
     - 'tests'
