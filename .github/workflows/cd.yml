@@ -29,9 +29,9 @@ jobs:
         with:
           branch: "main"
           commit_message: "docs: updated CHANGELOG.md"
-          commit_user_name: "Cleat GitHub Actions Bot"
-          commit_user_email: "cleat@rywal.dev"
-          commit_author: "Cleat GitHub Actions Bot <cleat@rywal.dev>"
+          commit_user_name: "API-Client GitHub Actions Bot"
+          commit_user_email: "api-client@rywal.dev"
+          commit_author: "API-Client GitHub Actions Bot <api-client@rywal.dev>"
 
       - name: Send Slack notification
         uses: 8398a7/action-slack@v3.11.0
