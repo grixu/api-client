@@ -2,6 +2,17 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.5.0 - 2021-11-17
+
+- Added `composer-git-hooks`
+- Configured hooks with auto-install/update
+- Added timeouts in pipelines
+- Added  auto-merge pipeline for small updates made by dependabot
+- Added `x-ray`
+- Added `x-ray` checking in CI pipeline
+- Added `x-ray` checking in git hooks
+- Added `changelog-updater-action` to CD pipeline
+
 ## 3.4.1 - 2021-11-08
 
 - Updated Larastan to `1.0.1`
@@ -29,7 +40,6 @@ All notable changes to `api-client` will be documented in this file
 - Added definition of `getDataCollection` in `FetchedData`
 - Make method `parseElement` public in `StraightKeyParser`
 - Added definition of `praseElement` in `ResponseParser` interface
-
 
 ## 3.2.1 - 2021-05-04
 
@@ -65,7 +75,7 @@ All notable changes to `api-client` will be documented in this file
 - Uses PHP8, dropped PHP 7.4 compatibility.
 - More concentrated on delivery flexible package that could be use directly in apps rather than in other packages
 - Made interfaces & classes for configuration, authorization, data fetching, containing & parsing to final classes
-  delivered by user
+- delivered by user
 - Prepared classes for config, url creating & fetching data from JSON API
 
 ## 2.0.1 - 2021-01-20
