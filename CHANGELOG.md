@@ -2,6 +2,10 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.5.2 - 2021-11-18
+
+- Fixed auto-merge
+
 ## 3.5.1 - 2021-11-18
 
 - Fixed auto-merging on dependabot's updates
