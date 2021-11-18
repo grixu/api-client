@@ -2,6 +2,12 @@
 
 All notable changes to `api-client` will be documented in this file
 
+## 3.5.1 - 2021-11-18
+
+- Fixed auto-merging on dependabot's updates
+- `commit-msg` regex updated
+- Fixed names of jobs & slack notifications in pipelines
+
 ## 3.5.0 - 2021-11-17
 
 - Added `composer-git-hooks`
